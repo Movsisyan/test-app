@@ -17,13 +17,32 @@
                     <view key="view" contentMode="scaleToFill" id="TNa-85-GTb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3ph-j2-QA3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ARR-Td-kik" id="zjp-92-2o9"/>
+                                    <outlet property="delegate" destination="ARR-Td-kik" id="d7N-nL-W70"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3ph-j2-QA3" firstAttribute="leading" secondItem="JaN-nU-Zns" secondAttribute="leading" id="HxS-AH-TA3"/>
+                            <constraint firstItem="JaN-nU-Zns" firstAttribute="trailing" secondItem="3ph-j2-QA3" secondAttribute="trailing" id="eU3-yT-5nk"/>
+                            <constraint firstItem="3ph-j2-QA3" firstAttribute="top" secondItem="JaN-nU-Zns" secondAttribute="top" id="lb3-5n-TVf"/>
+                            <constraint firstItem="JaN-nU-Zns" firstAttribute="bottom" secondItem="3ph-j2-QA3" secondAttribute="bottom" id="uCE-qv-9nI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JaN-nU-Zns"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="3ph-j2-QA3" id="Amz-oJ-BZ0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1A-Er-n5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="188"/>
+            <point key="canvasLocation" x="157.59999999999999" y="187.55622188905548"/>
         </scene>
     </scenes>
 </document>

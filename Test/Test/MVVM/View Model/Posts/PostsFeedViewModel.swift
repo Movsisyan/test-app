@@ -9,21 +9,33 @@
 import Foundation
 import RxSwift
 
-class PostsFeedViewModel: PostsFeedViewModeling {
+class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
     
-    let disposeBag = DisposeBag()
     let network: PostNetworking = PostsMoyaNetwork()
     
+    var posts = [Post]()
+    
     func getData() {
-        network.getPosts(page: 1).subscribe { event in
+        self.isLoading.accept(true)
+        network.getPosts(page: 1).subscribe {[weak self] event in
+            self?.isLoading.accept(false)
             switch event {
             case .next(let data):
-                print(data)
+                self?.posts += data
+                self?.isSuccess.accept(true)
             case .error(let error):
                 print(error.localizedDescription)
             default:
                 break
             }
         }.disposed(by: disposeBag)
+    }
+    
+    func numberOfRows() -> Int {
+        return posts.count
+    }
+    
+    func cellViewModel(at indexPath: IndexPath) -> PostCellViewModel {
+        return PostCellViewModel(posts[indexPath.row])
     }
 }

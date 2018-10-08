@@ -8,6 +8,8 @@
 
 import Foundation
 
-protocol PostsFeedViewModeling: class {
+protocol PostsFeedViewModeling: BaseViewModelling {
     func getData()
+    func numberOfRows() -> Int
+    func cellViewModel(at: IndexPath) -> PostCellViewModel
 }
