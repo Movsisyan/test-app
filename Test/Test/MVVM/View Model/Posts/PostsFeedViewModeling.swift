@@ -9,7 +9,8 @@
 import Foundation
 
 protocol PostsFeedViewModeling: BaseViewModelling {
-    func getData()
+    func loadData()
+    func loadMoreData(indexPath: IndexPath?)
     func numberOfRows() -> Int
     func cellViewModel(at: IndexPath) -> PostCellViewModel
 }

@@ -19,7 +19,7 @@ class PostsFeedVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.getData()
+        viewModel.loadData()
         tableView.register(PostCell.self)
     }
     
@@ -29,12 +29,13 @@ class PostsFeedVC: BaseVC {
         }).disposed(by: disposeBag)
         
         viewModel.isSuccess.asDriver().filter{$0}.drive(onNext: {[weak self] (_) in
-            self?.tableView.reloadData()
+            guard let wSelf = self else {return}
+            wSelf.tableView.reloadData()
         }).disposed(by: disposeBag)
     }
 }
 
-extension PostsFeedVC: UITableViewDataSource , UITableViewDelegate{
+extension PostsFeedVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
     }
@@ -43,5 +44,11 @@ extension PostsFeedVC: UITableViewDataSource , UITableViewDelegate{
         let cell: PostCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         cell.viewModel = viewModel.cellViewModel(at: indexPath)
         return cell
+    }
+}
+
+extension PostsFeedVC: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        viewModel.loadMoreData(indexPath: indexPaths.last)
     }
 }

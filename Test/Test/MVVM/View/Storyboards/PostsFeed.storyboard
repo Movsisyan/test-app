@@ -24,6 +24,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="ARR-Td-kik" id="zjp-92-2o9"/>
                                     <outlet property="delegate" destination="ARR-Td-kik" id="d7N-nL-W70"/>
+                                    <outlet property="prefetchDataSource" destination="ARR-Td-kik" id="Q9s-Y4-w5Z"/>
                                 </connections>
                             </tableView>
                         </subviews>
