@@ -8,15 +8,15 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
     
     let network: PostNetworking = PostsMoyaNetwork()
     
-    var posts = [Post]()
-    var page: Int = 0
-    var isFetchingData = false
-    var noMoreAvailableData = false
+    private var posts = [Post]()
+    private var page: Int = 0
+    private var isFetchingData = false
     
     func loadData() {
         if page == 0 {
@@ -28,11 +28,14 @@ class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
             self?.isFetchingData = false
             switch event {
             case .next(let data):
-                self?.noMoreAvailableData = data.isEmpty
+                if data.count != Config.offset {
+                    self?.page -= 1
+                }
                 self?.posts += data
                 self?.isSuccess.accept(true)
             case .error(let error):
-                print(error.localizedDescription)
+                self?.page -= 1
+                self?.error.accept(error)
             default:
                 break
             }
@@ -41,7 +44,7 @@ class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
     
     func loadMoreData(indexPath: IndexPath?) {
         guard let indexPath = indexPath else {return}
-        if indexPath.row == numberOfRows() - 1 && !isFetchingData && !noMoreAvailableData {
+        if indexPath.row == numberOfRows() - 1 && !isFetchingData {
             page += 1
             loadData()
         }

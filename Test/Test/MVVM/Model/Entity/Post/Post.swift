@@ -10,13 +10,14 @@ import Foundation
 import ObjectMapper
 
 struct Post: Mappable {
-    
+    var id: Int!
     var text: String = ""
     var imagePath: String?
     
     init?(map: Map) {}
     
     mutating func mapping(map: Map) {
+        id   <- map["id"]
         text <- map["text"]
         
         guard let attachments = map.JSON["attachments"] as? [[String: Any]],

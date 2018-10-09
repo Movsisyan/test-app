@@ -29,8 +29,13 @@ class PostsFeedVC: BaseVC {
         }).disposed(by: disposeBag)
         
         viewModel.isSuccess.asDriver().filter{$0}.drive(onNext: {[weak self] (_) in
-            guard let wSelf = self else {return}
-            wSelf.tableView.reloadData()
+            self?.tableView.reloadData()
+        }).disposed(by: disposeBag)
+    }
+    
+    override func errorHandling() {
+        viewModel.error.asDriver().filter{$0 != nil}.map{$0!}.drive(onNext: { (error) in
+            AlertHelper.showAlert(error.localizedDescription)
         }).disposed(by: disposeBag)
     }
 }

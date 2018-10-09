@@ -28,9 +28,10 @@ class PostCell: UITableViewCell {
                 postImageView.kf.indicatorType = .activity
                 postImageView.kf.cancelDownloadTask()
                 postImageView.kf.setImage(with: url) {[weak self] (image, _, _, _) in
+                    guard let wSelf = self else {return}
                     guard let image = image else {return}
                     let ratio = image.size.height / image.size.width
-                    self?.imageViewHeightConstraint.constant = (UIScreen.main.bounds.width - 40) * ratio
+                    wSelf.imageViewHeightConstraint.constant = (UIScreen.main.bounds.width - 40) * ratio
                 }
             } else {
                 imageViewTopConstraint.constant = 0
