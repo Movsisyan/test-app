@@ -14,5 +14,7 @@ target 'Test' do
   pod 'ObjectMapper', '3.1'
   pod 'SVProgressHUD', '2.2'
   pod 'Kingfisher', '4.7.0'
+  pod 'RealmSwift', '3.10.0'
+  pod 'Reachability', '3.2'
   
 end

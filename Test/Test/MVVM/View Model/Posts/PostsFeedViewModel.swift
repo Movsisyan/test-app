@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Reachability
 
 class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
     

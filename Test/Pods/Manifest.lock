@@ -8,6 +8,12 @@ PODS:
     - Moya/Core
     - RxSwift (~> 4.0)
   - ObjectMapper (3.1.0)
+  - Reachability (3.2)
+  - Realm (3.10.0):
+    - Realm/Headers (= 3.10.0)
+  - Realm/Headers (3.10.0)
+  - RealmSwift (3.10.0):
+    - Realm (= 3.10.0)
   - Result (3.2.4)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
@@ -19,6 +25,8 @@ DEPENDENCIES:
   - Kingfisher (= 4.7.0)
   - Moya/RxSwift (= 11.0.2)
   - ObjectMapper (= 3.1)
+  - Reachability (= 3.2)
+  - RealmSwift (= 3.10.0)
   - RxCocoa (= 4.1.2)
   - RxSwift (= 4.1.2)
   - SVProgressHUD (= 2.2)
@@ -29,6 +37,9 @@ SPEC REPOS:
     - Kingfisher
     - Moya
     - ObjectMapper
+    - Reachability
+    - Realm
+    - RealmSwift
     - Result
     - RxCocoa
     - RxSwift
@@ -39,11 +50,14 @@ SPEC CHECKSUMS:
   Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Realm: 85ab9e4f779d66f6e9ffeb118dc25b7f130c96ac
+  RealmSwift: 69121c8b86d0ae005fb779efdb10e606732e1c74
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SVProgressHUD: 3f37f3409ddb15f35c99315ae7dc33c474aa3256
 
-PODFILE CHECKSUM: 6df1a87d81278b1c3af1439c42e853f0e8f76e70
+PODFILE CHECKSUM: d4d55a0b56268a02f2947d34a1b5e00e6aa0adfc
 
 COCOAPODS: 1.5.3

@@ -26,6 +26,8 @@
 		87159435216BCB59003B569A /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87159434216BCB59003B569A /* PostManager.swift */; };
 		8793A9E9216D0CFB008E69A2 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9E8216D0CFB008E69A2 /* AlertHelper.swift */; };
 		8793A9EB216D0D71008E69A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9EA216D0D71008E69A2 /* Constants.swift */; };
+		8793A9EE216DB2F4008E69A2 /* PostsDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9ED216DB2F4008E69A2 /* PostsDBManager.swift */; };
+		8793A9F0216DBEF4008E69A2 /* ReachibilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9EF216DBEF4008E69A2 /* ReachibilityService.swift */; };
 		87D799FC2168611B00098337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D799FB2168611B00098337 /* AppDelegate.swift */; };
 		87D79A032168612000098337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D79A022168612000098337 /* Assets.xcassets */; };
 		87D79A062168612000098337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D79A042168612000098337 /* LaunchScreen.storyboard */; };
@@ -57,6 +59,8 @@
 		87159434216BCB59003B569A /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		8793A9E8216D0CFB008E69A2 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		8793A9EA216D0D71008E69A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8793A9ED216DB2F4008E69A2 /* PostsDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDBManager.swift; sourceTree = "<group>"; };
+		8793A9EF216DBEF4008E69A2 /* ReachibilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachibilityService.swift; sourceTree = "<group>"; };
 		87D799F82168611B00098337 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D799FB2168611B00098337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87D79A022168612000098337 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 		8715940A216A4631003B569A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8793A9EC216DB1C0008E69A2 /* DBManager */,
 				87159416216A7CDF003B569A /* Entity */,
 				8715940B216A4643003B569A /* Networking */,
 			);
@@ -173,6 +178,7 @@
 		87159432216B0F13003B569A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				8793A9EF216DBEF4008E69A2 /* ReachibilityService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -184,6 +190,14 @@
 				8793A9E8216D0CFB008E69A2 /* AlertHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		8793A9EC216DB1C0008E69A2 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				8793A9ED216DB2F4008E69A2 /* PostsDBManager.swift */,
+			);
+			path = DBManager;
 			sourceTree = "<group>";
 		};
 		87D799EF2168611B00098337 = {
@@ -415,6 +429,9 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -426,6 +443,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -454,6 +474,7 @@
 				8793A9E9216D0CFB008E69A2 /* AlertHelper.swift in Sources */,
 				87159411216A6CCD003B569A /* Config.swift in Sources */,
 				87159407216A34F4003B569A /* PostsFeedVC.swift in Sources */,
+				8793A9EE216DB2F4008E69A2 /* PostsDBManager.swift in Sources */,
 				8793A9EB216D0D71008E69A2 /* Constants.swift in Sources */,
 				87D79A1B216A2B3900098337 /* UIViewController+Instantiate.swift in Sources */,
 				87159413216A7152003B569A /* PostsMoyaApi.swift in Sources */,
@@ -461,6 +482,7 @@
 				87159420216A8DB5003B569A /* PostsFeedViewModeling.swift in Sources */,
 				87159409216A3670003B569A /* BaseVC.swift in Sources */,
 				87159431216B0DC5003B569A /* PostCellViewModel.swift in Sources */,
+				8793A9F0216DBEF4008E69A2 /* ReachibilityService.swift in Sources */,
 				87159418216A7D3D003B569A /* Post.swift in Sources */,
 				87159423216A9907003B569A /* PostNetworking.swift in Sources */,
 				8715942A216B095F003B569A /* UITableView+Extension.swift in Sources */,

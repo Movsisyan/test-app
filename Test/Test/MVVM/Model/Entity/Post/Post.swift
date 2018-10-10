@@ -6,20 +6,29 @@
 //  Copyright © 2018 Mher Movsisyan. All rights reserved.
 //
 
-import Foundation
 import ObjectMapper
+import RealmSwift
 
-struct Post: Mappable {
-    var id: Int!
-    var text: String = ""
-    var imagePath: String?
+final class Post: Object {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var text: String = ""
+    @objc dynamic var imagePath: String?
     
-    init?(map: Map) {}
+    required convenience init?(map: Map) {
+        self.init()
+        mapping(map: map)
+    }
     
-    mutating func mapping(map: Map) {
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+extension Post: Mappable {
+    func mapping(map: Map) {
         id   <- map["id"]
         text <- map["text"]
-        
+
         guard let attachments = map.JSON["attachments"] as? [[String: Any]],
             let photos = attachments.first,
             let photo = photos["photo"] as? [String: Any],
