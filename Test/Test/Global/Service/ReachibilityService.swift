@@ -8,26 +8,39 @@
 
 import Foundation
 import Reachability
+import RxCocoa
 
 class ReachibilityService {
     
-    var isReachable = true
+    var isReachable: BehaviorRelay<Bool?> = BehaviorRelay(value: nil)
+    
     static let shared = ReachibilityService()
     
     private var reachability : Reachability!
-    
+    private var isReachablitySet = false
+
     private init() {}
     
     func observeReachability(){
         self.reachability = Reachability()
         NotificationCenter.default.addObserver(self, selector:#selector(self.reachabilityChanged), name: NSNotification.Name.reachabilityChanged, object: nil)
-        reachability.startNotifier()
+        do {
+            try self.reachability.startNotifier()
+        }
+        catch(let error) {
+            print("Error occured while starting reachability notifications : \(error.localizedDescription)")
+        }
     }
     
     @objc func reachabilityChanged(note: Notification) {
-        
         let reachability = note.object as! Reachability
-        self.isReachable = reachability.isReachable()
+        switch reachability.connection {
+        case .cellular,
+             .wifi:
+            isReachable.accept(true)
+        case .none:
+            isReachable.accept(false)
+        }
     }
     
     deinit {

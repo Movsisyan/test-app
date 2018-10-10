@@ -19,7 +19,6 @@ class PostsFeedVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.loadData()
         tableView.register(PostCell.self)
     }
     

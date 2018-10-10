@@ -36,7 +36,8 @@ enum PostsMoyaApi: TargetType {
             var params = [String: Any]()
             params["owner_id"] = Config.allMeCommunityID
             params["count"] = Config.offset
-            params["offset"] = page * Config.offset
+            // page - 1 becaouse for first page there is no need for offset
+            params["offset"] = (page - 1) * Config.offset
             params.merge(defaultParameters) {$1}
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }

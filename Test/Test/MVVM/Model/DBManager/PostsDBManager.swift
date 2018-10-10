@@ -14,7 +14,7 @@ class PostsDBManager {
     
     private init() {}
     
-    static func addPost(post: Post) {
+    func addPost(_ post: Post) {
         do {
             let realm = try Realm()
             try realm.write {
@@ -25,7 +25,11 @@ class PostsDBManager {
         }
     }
     
-    static func getUser() -> Results<Post>? {
+    func addPosts(_ posts: [Post]) {
+        posts.forEach{addPost($0)}
+    }
+    
+    func getUser() -> Results<Post>? {
         do {
             let realm = try Realm()
             return realm.objects(Post.self)

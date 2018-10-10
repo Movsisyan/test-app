@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxCocoa
 
 protocol PostsFeedViewModeling: BaseViewModelling {
     func loadData()
