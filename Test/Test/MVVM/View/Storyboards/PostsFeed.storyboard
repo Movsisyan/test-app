@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ARR-Td-kik">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Posts FeedVC-->
+        <scene sceneID="z8B-5j-eNy">
+            <objects>
+                <viewController storyboardIdentifier="PostsFeedVC" id="ARR-Td-kik" customClass="PostsFeedVC" customModule="Test" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TNa-85-GTb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3ph-j2-QA3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ARR-Td-kik" id="zjp-92-2o9"/>
+                                    <outlet property="delegate" destination="ARR-Td-kik" id="d7N-nL-W70"/>
+                                    <outlet property="prefetchDataSource" destination="ARR-Td-kik" id="Q9s-Y4-w5Z"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3ph-j2-QA3" firstAttribute="leading" secondItem="JaN-nU-Zns" secondAttribute="leading" id="HxS-AH-TA3"/>
+                            <constraint firstItem="JaN-nU-Zns" firstAttribute="trailing" secondItem="3ph-j2-QA3" secondAttribute="trailing" id="eU3-yT-5nk"/>
+                            <constraint firstItem="3ph-j2-QA3" firstAttribute="top" secondItem="JaN-nU-Zns" secondAttribute="top" id="lb3-5n-TVf"/>
+                            <constraint firstItem="JaN-nU-Zns" firstAttribute="bottom" secondItem="3ph-j2-QA3" secondAttribute="bottom" id="uCE-qv-9nI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JaN-nU-Zns"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="3ph-j2-QA3" id="Amz-oJ-BZ0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x1A-Er-n5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157.59999999999999" y="187.55622188905548"/>
+        </scene>
+    </scenes>
+</document>
