@@ -76,6 +76,9 @@ class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
             page -= 1
             return}
         let upperBound = posts.count + Config.offset >= result.count ? result.count : posts.count + Config.offset
+        if result.count - upperBound < 20 {
+            page -= 1
+        }
         for i in posts.count..<upperBound {
             posts.append(result[i])
         }
