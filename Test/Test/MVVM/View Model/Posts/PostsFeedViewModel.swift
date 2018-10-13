@@ -16,11 +16,31 @@ class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
     
     let network: PostNetworking = PostsMoyaNetwork()
     
-    private var posts = [Post]()
-    private var page: Int = 0
-    private var isFetchingData = false
+    var shouldLoadMoreData: Bool {
+        let resultCount = result?.count ?? 0
+        if resultCount - upperBound < Config.offset && !isReachable {
+            return false
+        }
+        
+        if let totalCount = totalCount {
+            return totalCount != postViewModels.count
+        }
+        
+        return true
+    }
+    var showNetworkReachibilityAlert: BehaviorRelay<String?> = BehaviorRelay(value: nil)
+    
+    private var upperBound: Int {
+        let resultCount = result?.count ?? 0
+        return postViewModels.count + Config.offset >= resultCount ? resultCount : postViewModels.count + Config.offset
+    }
+    private var postViewModels = [PostCellViewModel]()
     private var isReachable = true
-    private var isBottomOfFeed = false
+    private var isFetchingData = false
+    private var totalCount: Int? = nil
+    private var result: Results<Post>? {
+        return PostsDBManager.shared.getPosts()
+    }
     
     override init() {
         super.init()
@@ -28,26 +48,31 @@ class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
         ReachibilityService.shared.isReachable.filter{$0 != nil}.map{$0!}.subscribe(onNext: { [weak self] (isReachable) in
             guard let wSelf = self else {return}
             wSelf.isReachable = isReachable
-            if !wSelf.isFetchingData {
+            if isReachable {
+                wSelf.showNetworkReachibilityAlert.accept(Constants.AlertMessages.reachable)
                 wSelf.loadData()
+            } else {
+                wSelf.showNetworkReachibilityAlert.accept(Constants.AlertMessages.unreachable)
             }
         }).disposed(by: disposeBag)
     }
     
     func loadData() {
-        if isBottomOfFeed {return}
-        page += 1
-        if isReachable {
-            loadDataFromNetwork()
-        } else {
-            loadDataFromRealm()
-        }
+        loadDataFromRealm()
     }
     
     func loadDataFromNetwork() {
-        if page == 1 {
-            self.isLoading.accept(true)
+        guard let result = result else {return}
+        if result.isEmpty {
+            isLoading.accept(true)
         }
+        if let totalCount = totalCount {
+            if result.count == totalCount {
+                return
+            }
+        }
+        let page = result.count/Config.offset + 1
+        if isFetchingData {return}
         isFetchingData = true
         network.getPosts(page: page).subscribe {[weak self] event in
             guard let wSelf = self else {return}
@@ -55,48 +80,33 @@ class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
             wSelf.isFetchingData = false
             switch event {
             case .next(let data):
-                if data.count != Config.offset {
-                    wSelf.page -= 1
-                    wSelf.isBottomOfFeed = true
-                }
-                PostsDBManager.shared.addPosts(data)
-                wSelf.posts += data
-                wSelf.isSuccess.accept(true)
+                guard let data = data else {return}
+                PostsDBManager.shared.addPosts(data.list)
+                wSelf.totalCount = data.totalCount
             case .error(let error):
-                wSelf.page -= 1
+                if !wSelf.isReachable {return}
                 wSelf.error.accept(error)
             default:
                 break
             }
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
     }
     
     func loadDataFromRealm() {
-        guard let result = PostsDBManager.shared.getUser() else {
-            page -= 1
-            return}
-        let upperBound = posts.count + Config.offset >= result.count ? result.count : posts.count + Config.offset
-        if result.count - upperBound < 20 {
-            page -= 1
-        }
-        for i in posts.count..<upperBound {
-            posts.append(result[i])
+        loadDataFromNetwork()
+        guard let result = result else {return}
+
+        for i in postViewModels.count..<upperBound {
+            postViewModels.append(PostCellViewModel(result[i]))
         }
         self.isSuccess.accept(true)
     }
     
-    func loadMoreData(indexPath: IndexPath?) {
-        guard let indexPath = indexPath else {return}
-        if indexPath.row == numberOfRows() - 1 && !isFetchingData {
-            loadData()
-        }
-    }
-    
     func numberOfRows() -> Int {
-        return posts.count
+        return postViewModels.count
     }
     
     func cellViewModel(at indexPath: IndexPath) -> PostCellViewModel {
-        return PostCellViewModel(posts[indexPath.row])
+        return postViewModels[indexPath.row]
     }
 }

@@ -43,6 +43,10 @@ class PostsFeedVC: BaseVC {
         viewModel.isSuccess.asDriver().filter{$0}.drive(onNext: {[weak self] (_) in
             self?.tableNode.reloadData()
         }).disposed(by: disposeBag)
+        
+        viewModel.showNetworkReachibilityAlert.asDriver().filter{$0 != nil}.map{$0!}.drive(onNext: { (message) in
+            AlertHelper.showAlert(message)
+        }).disposed(by: disposeBag)
     }
     
     override func errorHandling() {
@@ -52,6 +56,7 @@ class PostsFeedVC: BaseVC {
     }
 }
 
+// MARK: - ASTableDataSource
 extension PostsFeedVC: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
@@ -68,9 +73,10 @@ extension PostsFeedVC: ASTableDataSource {
     }
 }
 
+// MARK: - ASTableDelegate
 extension PostsFeedVC: ASTableDelegate {
     func shouldBatchFetch(for tableNode: ASTableNode) -> Bool {
-        return true
+        return viewModel.shouldLoadMoreData
     }
     
     func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {

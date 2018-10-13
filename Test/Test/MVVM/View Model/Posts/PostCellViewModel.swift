@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PostCellViewModel {
+struct PostCellViewModel {
     let text: String
     let coverURL: URL?
     

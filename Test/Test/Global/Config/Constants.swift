@@ -13,6 +13,11 @@ struct Constants {
         static let positive = "Ok"
     }
     
+    struct AlertMessages {
+        static let reachable = "You are connected to network!"
+        static let unreachable = "Sorry you don't have network connection!"
+    }
+    
     struct Font {
         static let `default` = UIFont(name: "HelveticaNeue", size: 17.0)!
     }

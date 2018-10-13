@@ -22,6 +22,7 @@
 		8715942A216B095F003B569A /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87159429216B095F003B569A /* UITableView+Extension.swift */; };
 		87159431216B0DC5003B569A /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87159430216B0DC5003B569A /* PostCellViewModel.swift */; };
 		87159435216BCB59003B569A /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87159434216BCB59003B569A /* PostManager.swift */; };
+		87843E92217248B400D51761 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87843E91217248B400D51761 /* NetworkResponse.swift */; };
 		8793A9E9216D0CFB008E69A2 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9E8216D0CFB008E69A2 /* AlertHelper.swift */; };
 		8793A9EB216D0D71008E69A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9EA216D0D71008E69A2 /* Constants.swift */; };
 		8793A9EE216DB2F4008E69A2 /* PostsDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9ED216DB2F4008E69A2 /* PostsDBManager.swift */; };
@@ -54,6 +55,7 @@
 		87159429216B095F003B569A /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		87159430216B0DC5003B569A /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
 		87159434216BCB59003B569A /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
+		87843E91217248B400D51761 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		8793A9E8216D0CFB008E69A2 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		8793A9EA216D0D71008E69A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8793A9ED216DB2F4008E69A2 /* PostsDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDBManager.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				8715940C216A46B7003B569A /* Moya+Global.swift */,
+				87843E91217248B400D51761 /* NetworkResponse.swift */,
 				8715940E216A470D003B569A /* Posts */,
 			);
 			path = Networking;
@@ -484,6 +487,7 @@
 				87159427216B07ED003B569A /* BaseViewModeling.swift in Sources */,
 				87159420216A8DB5003B569A /* PostsFeedViewModeling.swift in Sources */,
 				8793A9F2216F0F60008E69A2 /* PostCellNode.swift in Sources */,
+				87843E92217248B400D51761 /* NetworkResponse.swift in Sources */,
 				87159409216A3670003B569A /* BaseVC.swift in Sources */,
 				87159431216B0DC5003B569A /* PostCellViewModel.swift in Sources */,
 				8793A9F0216DBEF4008E69A2 /* ReachibilityService.swift in Sources */,

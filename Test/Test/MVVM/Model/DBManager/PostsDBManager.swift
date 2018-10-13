@@ -29,7 +29,7 @@ class PostsDBManager {
         posts.forEach{addPost($0)}
     }
     
-    func getUser() -> Results<Post>? {
+    func getPosts() -> Results<Post>? {
         do {
             let realm = try Realm()
             return realm.objects(Post.self)
