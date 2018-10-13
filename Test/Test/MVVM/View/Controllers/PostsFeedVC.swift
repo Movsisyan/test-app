@@ -6,20 +6,33 @@
 //  Copyright © 2018 Mher Movsisyan. All rights reserved.
 //
 
-import UIKit
 import RxSwift
 import SVProgressHUD
+import AsyncDisplayKit
 
 class PostsFeedVC: BaseVC {
 
     let viewModel: PostsFeedViewModeling = PostsFeedViewModel()
-    
-    @IBOutlet weak var tableView: UITableView!
+    let tableNode = ASTableNode()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(PostCell.self)
+        setupTableNode()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        tableNode.frame = view.bounds
+    }
+    
+    private func setupTableNode() {
+        view.addSubnode(tableNode)
+        tableNode.dataSource = self
+        tableNode.delegate = self
+        tableNode.view.allowsSelection = false
+        tableNode.view.separatorStyle = .singleLineEtched
     }
     
     override func setupBindings() {
@@ -28,7 +41,7 @@ class PostsFeedVC: BaseVC {
         }).disposed(by: disposeBag)
         
         viewModel.isSuccess.asDriver().filter{$0}.drive(onNext: {[weak self] (_) in
-            self?.tableView.reloadData()
+            self?.tableNode.reloadData()
         }).disposed(by: disposeBag)
     }
     
@@ -39,20 +52,31 @@ class PostsFeedVC: BaseVC {
     }
 }
 
-extension PostsFeedVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension PostsFeedVC: ASTableDataSource {
+    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: PostCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.viewModel = viewModel.cellViewModel(at: indexPath)
-        return cell
+    func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+        let nodeViewModel = viewModel.cellViewModel(at: indexPath)
+        
+        return {
+            let node = PostCellNode()
+            node.viewModel = nodeViewModel
+            return node
+        }
     }
 }
 
-extension PostsFeedVC: UITableViewDataSourcePrefetching {
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        viewModel.loadMoreData(indexPath: indexPaths.last)
+extension PostsFeedVC: ASTableDelegate {
+    func shouldBatchFetch(for tableNode: ASTableNode) -> Bool {
+        return true
+    }
+    
+    func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {
+        viewModel.loadData()
+        viewModel.isSuccess.subscribe(onNext: { (_) in
+            context.completeBatchFetching(true)
+        }).disposed(by: disposeBag)
     }
 }

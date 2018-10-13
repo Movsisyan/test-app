@@ -20,14 +20,13 @@
 		87159425216B0747003B569A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87159424216B0747003B569A /* BaseViewModel.swift */; };
 		87159427216B07ED003B569A /* BaseViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87159426216B07EC003B569A /* BaseViewModeling.swift */; };
 		8715942A216B095F003B569A /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87159429216B095F003B569A /* UITableView+Extension.swift */; };
-		8715942E216B0A0C003B569A /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715942C216B0A0C003B569A /* PostCell.swift */; };
-		8715942F216B0A0C003B569A /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8715942D216B0A0C003B569A /* PostCell.xib */; };
 		87159431216B0DC5003B569A /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87159430216B0DC5003B569A /* PostCellViewModel.swift */; };
 		87159435216BCB59003B569A /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87159434216BCB59003B569A /* PostManager.swift */; };
 		8793A9E9216D0CFB008E69A2 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9E8216D0CFB008E69A2 /* AlertHelper.swift */; };
 		8793A9EB216D0D71008E69A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9EA216D0D71008E69A2 /* Constants.swift */; };
 		8793A9EE216DB2F4008E69A2 /* PostsDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9ED216DB2F4008E69A2 /* PostsDBManager.swift */; };
 		8793A9F0216DBEF4008E69A2 /* ReachibilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9EF216DBEF4008E69A2 /* ReachibilityService.swift */; };
+		8793A9F2216F0F60008E69A2 /* PostCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793A9F1216F0F60008E69A2 /* PostCellNode.swift */; };
 		87D799FC2168611B00098337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D799FB2168611B00098337 /* AppDelegate.swift */; };
 		87D79A032168612000098337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D79A022168612000098337 /* Assets.xcassets */; };
 		87D79A062168612000098337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D79A042168612000098337 /* LaunchScreen.storyboard */; };
@@ -53,14 +52,13 @@
 		87159424216B0747003B569A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		87159426216B07EC003B569A /* BaseViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModeling.swift; sourceTree = "<group>"; };
 		87159429216B095F003B569A /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		8715942C216B0A0C003B569A /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
-		8715942D216B0A0C003B569A /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		87159430216B0DC5003B569A /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
 		87159434216BCB59003B569A /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		8793A9E8216D0CFB008E69A2 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		8793A9EA216D0D71008E69A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8793A9ED216DB2F4008E69A2 /* PostsDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDBManager.swift; sourceTree = "<group>"; };
 		8793A9EF216DBEF4008E69A2 /* ReachibilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachibilityService.swift; sourceTree = "<group>"; };
+		8793A9F1216F0F60008E69A2 /* PostCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellNode.swift; sourceTree = "<group>"; };
 		87D799F82168611B00098337 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D799FB2168611B00098337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87D79A022168612000098337 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,8 +167,7 @@
 		8715942B216B09A5003B569A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				8715942C216B0A0C003B569A /* PostCell.swift */,
-				8715942D216B0A0C003B569A /* PostCell.xib */,
+				8793A9F1216F0F60008E69A2 /* PostCellNode.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -393,7 +390,6 @@
 				87D79A15216A29C100098337 /* PostsFeed.storyboard in Resources */,
 				87D79A062168612000098337 /* LaunchScreen.storyboard in Resources */,
 				87D79A032168612000098337 /* Assets.xcassets in Resources */,
-				8715942F216B0A0C003B569A /* PostCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +425,9 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -436,6 +435,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -443,6 +443,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -450,6 +453,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -463,7 +467,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8715942E216B0A0C003B569A /* PostCell.swift in Sources */,
 				8715940D216A46B7003B569A /* Moya+Global.swift in Sources */,
 				8715941E216A8D90003B569A /* PostsFeedViewModel.swift in Sources */,
 				87159435216BCB59003B569A /* PostManager.swift in Sources */,
@@ -480,6 +483,7 @@
 				87159413216A7152003B569A /* PostsMoyaApi.swift in Sources */,
 				87159427216B07ED003B569A /* BaseViewModeling.swift in Sources */,
 				87159420216A8DB5003B569A /* PostsFeedViewModeling.swift in Sources */,
+				8793A9F2216F0F60008E69A2 /* PostCellNode.swift in Sources */,
 				87159409216A3670003B569A /* BaseVC.swift in Sources */,
 				87159431216B0DC5003B569A /* PostCellViewModel.swift in Sources */,
 				8793A9F0216DBEF4008E69A2 /* ReachibilityService.swift in Sources */,

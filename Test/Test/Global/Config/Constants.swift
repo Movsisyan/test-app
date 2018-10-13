@@ -6,10 +6,14 @@
 //  Copyright © 2018 Mher Movsisyan. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Constants {
     struct AlertTitles {
         static let positive = "Ok"
+    }
+    
+    struct Font {
+        static let `default` = UIFont(name: "HelveticaNeue", size: 17.0)!
     }
 }

@@ -16,5 +16,6 @@ target 'Test' do
   pod 'Kingfisher', '4.7.0'
   pod 'RealmSwift', '3.10.0'
   pod 'ReachabilitySwift', '4.2.1'
+  pod 'Texture'
   
 end
