@@ -14,13 +14,12 @@ import ObjectMapper
 class PostsMoyaNetwork: PostNetworking {
     let provider = MoyaProvider<PostsMoyaApi>(useGlobalSettings: true, useSampleData: false).rx
     
-    func getPosts(page: Int) -> Observable<[Post]> {
+    func getPosts(page: Int) -> Observable<NetworkResponse<Post>?> {
         return provider.request(.getPosts(page: page)).asObservable().map({
             let response = try? $0.mapJSON()
             guard let json = response as? [String: Any],
-                let dictionary = json["response"] as? [String: Any],
-                let items = dictionary["items"] as? [[String: Any]] else {return []}
-            return Mapper<Post>().mapArray(JSONArray: items)
+                let dictionary = json["response"] as? [String: Any] else {return nil}
+            return Mapper<NetworkResponse>().map(JSON: dictionary)
         })
     }
 }

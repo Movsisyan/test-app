@@ -10,8 +10,10 @@ import Foundation
 import RxCocoa
 
 protocol PostsFeedViewModeling: BaseViewModelling {
+    var shouldLoadMoreData: Bool {get}
+    var showNetworkReachibilityAlert: BehaviorRelay<String?> {get}
+    
     func loadData()
-    func loadMoreData(indexPath: IndexPath?)
     func numberOfRows() -> Int
     func cellViewModel(at: IndexPath) -> PostCellViewModel
 }

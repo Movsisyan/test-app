@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol PostNetworking {
-    func getPosts(page: Int) -> Observable<[Post]>
+    func getPosts(page: Int) -> Observable<NetworkResponse<Post>?>
 }
