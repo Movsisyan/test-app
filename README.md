@@ -55,6 +55,10 @@ Frameworks:
 
 . [Realm](https://realm.io/products/realm-mobile-database/) - Realm Mobile Database is an alternative to SQLite and Core Data. Thanks to its zero-copy design, Realm Mobile Database is much faster than an ORM, and often faster than raw SQLite. Get started in minutes, not hours.
 
-. [Kingfisher](https://github.com/onevcat/Kingfisher) - A lighweight, pure-Swift library for downloading and caching images from the web.
+. [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) - Simple JSON object mapping writtern in Swift.
 
-. [SwiftyBeaver](https://github.com/SwiftyBeaver/SwiftyBeaver) - Convenient logging during development & release.
+. [Texture](https://github.com/TextureGroup/Texture) - Smooth asynchronous user interfaces for iOS apps.
+
+. [Reachability](https://github.com/ashleymills/Reachability.swift) - Reachability.swift is a replacement for Apple's Reachability sample, re-written in Swift with closures.
+
+. [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD) - SVProgressHUD is a clean and easy-to-use HUD meant to display the progress of an ongoing task on iOS and tvOS.
