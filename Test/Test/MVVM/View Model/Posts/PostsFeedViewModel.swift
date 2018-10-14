@@ -62,6 +62,9 @@ class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
     }
     
     func loadDataFromNetwork() {
+        if !isReachable || isFetchingData {return}
+        isFetchingData = true
+        
         guard let result = result else {return}
         if result.isEmpty {
             isLoading.accept(true)
@@ -71,9 +74,8 @@ class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
                 return
             }
         }
-        let page = result.count/Config.offset + 1
-        if isFetchingData {return}
-        isFetchingData = true
+        
+        let page = postViewModels.count/Config.offset + 1
         network.getPosts(page: page).subscribe {[weak self] event in
             guard let wSelf = self else {return}
             wSelf.isLoading.accept(false)
@@ -84,7 +86,6 @@ class PostsFeedViewModel: BaseViewModel, PostsFeedViewModeling {
                 PostsDBManager.shared.addPosts(data.list)
                 wSelf.totalCount = data.totalCount
             case .error(let error):
-                if !wSelf.isReachable {return}
                 wSelf.error.accept(error)
             default:
                 break

@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.6.0)
-  - Kingfisher (4.7.0)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -44,7 +43,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (= 4.6)
-  - Kingfisher (= 4.7.0)
   - Moya/RxSwift (= 11.0.2)
   - ObjectMapper (= 3.1)
   - ReachabilitySwift (= 4.2.1)
@@ -57,7 +55,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - Kingfisher
     - Moya
     - ObjectMapper
     - PINCache
@@ -74,7 +71,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
@@ -89,6 +85,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 3f37f3409ddb15f35c99315ae7dc33c474aa3256
   Texture: 9d7e38965cf22ccd7cd9c249dd78b3f14e70ab6c
 
-PODFILE CHECKSUM: 8ef5425d01bd8a6c8197d2523b5c29982ea37f4f
+PODFILE CHECKSUM: b7775a380161cb35e135fe8c1bc43a0da37982bf
 
 COCOAPODS: 1.5.3

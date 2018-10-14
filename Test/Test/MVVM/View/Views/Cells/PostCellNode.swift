@@ -7,13 +7,11 @@
 //
 
 import AsyncDisplayKit
-import Kingfisher
 
 class PostCellNode: ASCellNode {
     
     var postLabel = ASTextNode()
     var postImageView = ASNetworkImageNode()
-    var name: String!
     
     var viewModel: PostCellViewModel! {
         didSet {
@@ -33,30 +31,26 @@ class PostCellNode: ASCellNode {
         
         postImageView.clipsToBounds = true
         postImageView.delegate = self
-        postImageView.placeholderFadeDuration = 0.15
         postImageView.contentMode = UIViewContentMode.scaleAspectFill
         
         self.addSubnode(postLabel)
         self.addSubnode(postImageView)
     }
     
-    func createLayerBackedTextNode(attributedString: NSAttributedString) -> ASTextNode {
-        let textNode = ASTextNode()
-        textNode.isLayerBacked = true
-        textNode.attributedText = attributedString
-        
-        return textNode
-    }
-    
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         let nameInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(8, 16, 0, 16), child: postLabel)
         
-        let ratio: CGFloat = 2.0/3.0
-        let imageRationSpec = ASRatioLayoutSpec(ratio: ratio, child: postImageView)
+        let width = UIScreen.main.bounds.size.width
+        if let image = postImageView.image {
+            let ratio = image.size.height/image.size.width
+            postImageView.style.preferredSize = CGSize(width: width, height: width * ratio)
+        } else {
+            postImageView.style.preferredSize = CGSize(width: width, height: width)
+        }
         
         let verticalStack = ASStackLayoutSpec.vertical()
         if viewModel.coverURL != nil {
-            verticalStack.children = [nameInsetSpec, imageRationSpec]
+            verticalStack.children = [nameInsetSpec, postImageView]
         } else {
             verticalStack.children = [nameInsetSpec]
         }
@@ -66,10 +60,11 @@ class PostCellNode: ASCellNode {
 
 extension PostCellNode: ASNetworkImageNodeDelegate {
     func imageNode(_ imageNode: ASNetworkImageNode, didFailWithError error: Error) {
-        // TODO: -
+        // TODO: - Resize cell to fit failed case
     }
     
     func imageNode(_ imageNode: ASNetworkImageNode, didLoad image: UIImage) {
-        // TODO: -
+        // TODO: - Find way to resize cell to fit it's image node content size
+        // self.invalidateCalculatedLayout()
     }
 }
