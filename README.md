@@ -28,7 +28,7 @@ Setup:
 
 . Clone the repository to your machine
 
-. Navigate to Advertiser folder
+. Navigate to Test folder
     
 . Install pods: 
     `pod install`
@@ -40,7 +40,7 @@ Getting Started:
 
 . Code commentation followed Apple standard style.
 
-. In order to make the project going perfect with MVVM architecture, `RxSwift` was preferred to use for binding data and UIs control. Not implemented!
+. In order to make the project going perfect with MVVM architecture, `RxSwift` was preferred to use for binding data and UIs control.
 
 
 
